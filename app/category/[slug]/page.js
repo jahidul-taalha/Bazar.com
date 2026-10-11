@@ -161,7 +161,7 @@ return ( <main className="min-h-[calc(100vh-200px)] bg-[#f4f7f4] px-4 py-8"> <di
     </p>
 
     {loading ? (
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {Array.from({ length: 6 }, (_, index) => (
           <div
             key={index}
@@ -188,7 +188,7 @@ return ( <main className="min-h-[calc(100vh-200px)] bg-[#f4f7f4] px-4 py-8"> <di
         </p>
       </section>
     ) : (
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {sortedProducts.map((product) => {
           const isUp = product.change?.dir === "up";
           const isDown = product.change?.dir === "down";
