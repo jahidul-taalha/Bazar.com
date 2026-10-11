@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# বাজার দর (Bazar Dor)
 
-## Getting Started
+**Know today's essential product prices at a glance.**
 
-First, run the development server:
+Bazar Dor is a Bangla-language web application that helps users explore essential product prices, compare market prices, and understand daily price changes in Bangladesh.
+
+## Live Website
+
+🔗 [Visit Bazar Dor](https://bazar-dortoday.netlify.app/)
+
+## Features
+
+* Browse essential products and their current prices.
+* Explore products by category.
+* View product details and daily price changes.
+* Compare market-wise prices where data is available.
+* View minimum, maximum, and average market prices.
+* User authentication with email and password.
+* Responsive interface for desktop, tablet, and mobile devices.
+* Bangla-language user interface.
+
+## Technologies Used
+
+* Next.js
+* React
+* JavaScript
+* Tailwind CSS
+* Better Auth
+* MongoDB
+* REST API
+* Netlify
+
+## Installation and Setup
+
+### Prerequisites
+
+* Node.js
+* npm
+* MongoDB connection string
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/jahidul-taalha/Bazar.com.git
+```
+
+### 2. Navigate to the Project Directory
+
+```bash
+cd Bazar.com
+```
+
+### 3. Install Dependencies
+
+```bash
+npm install
+```
+
+### 4. Configure Environment Variables
+
+Create a `.env.local` file in the root directory and configure the following variables:
+
+```env
+BETTER_AUTH_URL=http://localhost:3000
+BETTER_AUTH_SECRET=your_secret_key
+MONGODB_URI=your_mongodb_connection_string
+```
+
+Replace the placeholder values with your actual configuration. Keep `.env.local` private and never commit your credentials to GitHub.
+
+### 5. Run the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 6. Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+## API
 
-To learn more about Next.js, take a look at the following resources:
+The application retrieves product information from the Bazar Dor API.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Base URL:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```text
+https://api.api-store.workers.dev/api/bazardor
+```
 
-## Deploy on Vercel
+Available endpoints include:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* `GET /products` — Retrieve products.
+* `GET /products?category=chal` — Retrieve products by category.
+* `GET /products/1` — Retrieve a product by ID.
+* `GET /categories` — Retrieve categories.
+* `GET /categories/chal` — Retrieve a category's information.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+
+The application is deployed on Netlify.
+
+🔗 Live URL: https://bazar-dortoday.netlify.app/
+
+## Author
+
+**MD. JAHIDUL ISLAM**
+
+GitHub: [@jahidul-taalha](https://github.com/jahidul-taalha)
+
+---
+
+Built with ❤️ to make everyday market price information easier to access.
