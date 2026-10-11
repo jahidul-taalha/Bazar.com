@@ -40,57 +40,49 @@ Bazar Dor is a Bangla-language web application that helps users explore essentia
 
 ### 1. Clone the Repository
 
-```bash
+
 git clone https://github.com/jahidul-taalha/Bazar.com.git
-```
+
 
 ### 2. Navigate to the Project Directory
 
-```bash
 cd Bazar.com
-```
+
 
 ### 3. Install Dependencies
 
-```bash
+
 npm install
-```
+
 
 ### 4. Configure Environment Variables
 
 Create a `.env.local` file in the root directory and configure the following variables:
 
-```env
+
 BETTER_AUTH_URL=http://localhost:3000
 BETTER_AUTH_SECRET=your_secret_key
 MONGODB_URI=your_mongodb_connection_string
-```
+
 
 Replace the placeholder values with your actual configuration. Keep `.env.local` private and never commit your credentials to GitHub.
 
 ### 5. Run the Development Server
 
-```bash
+
 npm run dev
-```
+
 
 Open http://localhost:3000 in your browser.
 
 ### 6. Build for Production
 
-```bash
 npm run build
-```
 
 ## API
-
 The application retrieves product information from the Bazar Dor API.
-
 **Base URL:**
-
-```text
 https://api.api-store.workers.dev/api/bazardor
-```
 
 Available endpoints include:
 
@@ -101,17 +93,13 @@ Available endpoints include:
 * `GET /categories/chal` — Retrieve a category's information.
 
 ## Deployment
-
 The application is deployed on Netlify.
 
 🔗 Live URL: https://bazar-dortoday.netlify.app/
 
 ## Author
-
 **MD. JAHIDUL ISLAM**
 
 GitHub: [@jahidul-taalha](https://github.com/jahidul-taalha)
-
----
 
 Built with ❤️ to make everyday market price information easier to access.
