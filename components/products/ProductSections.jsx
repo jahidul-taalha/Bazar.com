@@ -21,10 +21,7 @@ export default function ProductSections() {
         }
 
         const data = await response.json();
-
-        const productList = Array.isArray(data)
-          ? data
-          : data.products;
+        const productList = Array.isArray(data) ? data : data.products;
 
         if (!Array.isArray(productList)) {
           throw new Error("API response-এর format সঠিক নয়।");
@@ -43,17 +40,23 @@ export default function ProductSections() {
 
   if (loading) {
     return (
-      <section id="সব-পণ্য" className="mx-auto max-w-7xl px-4 py-12">
-        <p className="text-gray-500">পণ্যের তথ্য লোড হচ্ছে...</p>
+      <section
+        id="সব-পণ্য"
+        className="mx-auto max-w-5xl px-4 py-8 sm:px-6"
+      >
+        <p className="text-sm text-gray-500">পণ্যের তথ্য লোড হচ্ছে...</p>
       </section>
     );
   }
 
   if (error) {
     return (
-      <section id="সব-পণ্য" className="mx-auto max-w-7xl px-4 py-12">
-        <p className="text-red-600">{error}</p>
-        <p className="mt-2 text-sm text-gray-500">
+      <section
+        id="সব-পণ্য"
+        className="mx-auto max-w-5xl px-4 py-8 sm:px-6"
+      >
+        <p className="text-sm text-red-600">{error}</p>
+        <p className="mt-2 text-xs text-gray-500">
           API সাময়িকভাবে unavailable হতে পারে। কিছুক্ষণ পরে আবার চেষ্টা করো।
         </p>
       </section>
@@ -70,71 +73,74 @@ export default function ProductSections() {
     .sort((a, b) => (a.change?.pct ?? 0) - (b.change?.pct ?? 0))
     .slice(0, 6);
 
+  const sections = [
+    {
+      title: "আজ দাম বেড়েছে",
+      icon: "▲",
+      products: risingProducts,
+      emptyMessage: "দাম বেড়েছে এমন পণ্য পাওয়া যায়নি।",
+    },
+    {
+      title: "আজ দাম কমেছে",
+      icon: "▼",
+      products: fallingProducts,
+      emptyMessage: "দাম কমেছে এমন পণ্য পাওয়া যায়নি।",
+    },
+  ];
+
   return (
-    <>
-      <section className="mx-auto max-w-7xl px-4 py-8 sm:py-10">
-        <div className="mb-6">
-          <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">
-            📈 আজ দাম বেড়েছে
+    <div className="bg-[#f0f5f1]">
+      {sections.map((section) => (
+        <section
+          key={section.title}
+          className="mx-auto max-w-5xl px-4 py-5 sm:px-6 sm:py-6"
+        >
+          <h2 className="mb-3 flex items-center gap-2 text-base font-bold text-[#263229] sm:text-lg">
+            <span
+              className={
+                section.icon === "▲" ? "text-red-500" : "text-green-600"
+              }
+            >
+              {section.icon}
+            </span>
+            {section.title}
           </h2>
-          <p className="mt-2 text-sm text-gray-500">
-            যেসব পণ্যের দাম আজ বেড়েছে
-          </p>
-        </div>
 
-        {risingProducts.length > 0 ? (
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {risingProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        ) : (
-          <p className="text-gray-500">দাম বেড়েছে এমন পণ্য পাওয়া যায়নি।</p>
-        )}
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 py-8 sm:py-10">
-        <div className="mb-6">
-          <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">
-            📉 আজ দাম কমেছে
-          </h2>
-          <p className="mt-2 text-sm text-gray-500">
-            যেসব পণ্যের দাম আজ কমেছে
-          </p>
-        </div>
-
-        {fallingProducts.length > 0 ? (
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {fallingProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        ) : (
-          <p className="text-gray-500">দাম কমেছে এমন পণ্য পাওয়া যায়নি।</p>
-        )}
-      </section>
+          {section.products.length > 0 ? (
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {section.products.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          ) : (
+            <p className="text-sm text-gray-500">
+              {section.emptyMessage}
+            </p>
+          )}
+        </section>
+      ))}
 
       <section
         id="সব-পণ্য"
-        className="mx-auto max-w-7xl px-4 py-12 sm:py-16"
+        className="mx-auto max-w-5xl scroll-mt-4 px-4 py-6 sm:px-6 sm:py-8"
       >
-        <div className="mb-8">
-          <p className="text-sm font-semibold text-green-700">
-            বাজারের সর্বশেষ তথ্য
-          </p>
-
-          <h2 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl">
+        <div className="mb-4">
+          <h2 className="text-lg font-bold text-[#263229] sm:text-xl">
             সব পণ্য
           </h2>
+
+          <p className="mt-1 text-xs text-gray-500">
+            বাজারের সর্বশেষ পণ্যের দাম
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </section>
-    </>
+    </div>
   );
 }
 
